@@ -1,4 +1,4 @@
-//for ref time, month need to be -1, hours need to -8 (UTC time is needed), the time is the start time of the event, the ref time must be a time from the past
+//for ref time, month need to be -1, hours need to -8 for timezone offset (UTC time is needed), the time is the start time of the event, the ref time must be a time from the past
 
 var eventsData = [
     {
@@ -27,7 +27,7 @@ var eventsData = [
         major: true,
     },{
         name: "Winter Island",
-        refTime: new Date(2020,6-1,7,7-8,35,00),
+        refTime: new Date(2020,6-1,7,7-8,35,0),
         interval: (5*24+4)*3600*1000, //5 days 4 hours,
         duration: 31*20*60*1000, //10 hours, 20 mins
         major: false,
@@ -57,7 +57,7 @@ var eventsData = [
         major: false,
     },{
         name: "Hoppity's Hunt",
-        refTime: new Date(2024,4-1,28,13-8,55,0), // First event was April 28th 2024 at 1:55 PM UTC
+        refTime: new Date(2024,4-1,28,13-8,55,0), // First event was April 28th 2024 at 1:55 PM (UTC+8)
         interval: (5*24+4)*3600*1000, //5 days 4 hours
         duration: (24+7)*3600*1000, //1 day 7 hours
         major: false,
