@@ -3,7 +3,7 @@ setInterval(updateEvents,1000);
 let manualTime = 0;
 
 function updateEvents(){
-    let numberOfEvents = 9;
+    let numberOfEvents = 10;
     let numberOfMajorEvents = 4;
     
     //let currentTime = new Date();

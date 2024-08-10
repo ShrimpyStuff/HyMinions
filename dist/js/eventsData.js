@@ -55,5 +55,11 @@ var eventsData = [
         interval: 3600*1000, //1 hour
         duration: 0,
         major: false,
+    },{
+        name: "Hoppity's Hunt",
+        refTime: new Date(2024,4-1,28,13-8,55,0), // First event was April 28th 2024 at 1:55 PM UTC
+        interval: (5*24+4)*3600*1000, //5 days 4 hours
+        duration: (24+7)*3600*1000, //1 day 7 hours
+        major: false,
     },
 ];
