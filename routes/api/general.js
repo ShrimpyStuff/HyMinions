@@ -133,7 +133,7 @@ exports.merge = function merge(data1, data2) {
 
 exports.findBazaar = async function findBazaar(settings){
     return new Promise((resolve)=>{
-        fetch("https://api.hypixel.net/skyblock/bazaar")
+        fetch("https://api.hypixel.net/v2/skyblock/bazaar")
         .then(result => result.json())
         .then(({ products }) => {
             var pricesAjax = new Array(2);
@@ -179,7 +179,7 @@ exports.findProfile = async function findProfile(name,settings){
                 return;
             }
             settings.name=name; //fix case
-            fetch("https://api.hypixel.net/skyblock/profiles?key="+process.env.HYPIXEL_KEY+"&uuid="+id)
+            fetch("https://api.hypixel.net/v2/skyblock/profiles?key="+process.env.HYPIXEL_KEY+"&uuid="+id)
             .then(result => result.json())
             .then(({success, profiles}) => {
                 if(!success){
@@ -203,14 +203,14 @@ exports.findProfile = async function findProfile(name,settings){
                     profilesAjax[index]["rawCollections"] = new Array();
                     //unique minions crafted for minions cost cal and minions cal
                     Object.keys(profile["members"]).forEach((member, index2)=>{
-                        if(profile["members"][member]["crafted_generators"]){
-                            profilesAjax[index]["rawMinions"].push(...profile["members"][member]["crafted_generators"]);
+                        if(profile["members"][member]["player_data"]["crafted_generators"]){
+                            profilesAjax[index]["rawMinions"].push(...profile["members"][member]["player_data"]["crafted_generators"]);
                         }
                     });
                     //collections for minions cost cal
                     Object.keys(profile["members"]).forEach((member, index2)=>{
-                        if(profile["members"][member]["unlocked_coll_tiers"]){
-                            profilesAjax[index]["rawCollections"].push(...profile["members"][member]["unlocked_coll_tiers"]);
+                        if(profile["members"][member]["player_data"]["unlocked_coll_tiers"]){
+                            profilesAjax[index]["rawCollections"].push(...profile["members"][member]["player_data"]["unlocked_coll_tiers"]);
                         }
                     });
                     //community slots for minions cost cal
@@ -263,6 +263,7 @@ exports.findProfile = async function findProfile(name,settings){
                     });
                     profilesAjax[index]["cuteName"] = profile["cute_name"];
                 });
+                console.log("profilesAjax",profilesAjax);
                 profilesAjax.sort((a,b)=>{
                     return b["rawMinions"].length-a["rawMinions"].length;
                 });
