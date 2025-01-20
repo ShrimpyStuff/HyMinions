@@ -203,13 +203,13 @@ exports.findProfile = async function findProfile(name,settings){
                     profilesAjax[index]["rawCollections"] = new Array();
                     //unique minions crafted for minions cost cal and minions cal
                     Object.keys(profile["members"]).forEach((member, index2)=>{
-                        if(profile["members"][member]["player_data"]["crafted_generators"]){
+                        if(profile["members"][member]?.["player_data"]?.["crafted_generators"]){
                             profilesAjax[index]["rawMinions"].push(...profile["members"][member]["player_data"]["crafted_generators"]);
                         }
                     });
                     //collections for minions cost cal
                     Object.keys(profile["members"]).forEach((member, index2)=>{
-                        if(profile["members"][member]["player_data"]["unlocked_coll_tiers"]){
+                        if(profile["members"][member]?.["player_data"]?.["unlocked_coll_tiers"]){
                             profilesAjax[index]["rawCollections"].push(...profile["members"][member]["player_data"]["unlocked_coll_tiers"]);
                         }
                     });
